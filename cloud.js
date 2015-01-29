@@ -6,6 +6,7 @@ module.exports = {
    * @return {Number} the number of times "cloud" shows up in `phrase`
    */
   findCloud: function(phrase) {
+    return phrase.match(/\b(cloud|Cloud)\b/g).length;
   },
 
   /**
@@ -16,6 +17,14 @@ module.exports = {
    * @return {String} The new phrase.
    */
   replaceCloud: function(phrase, newWord) {
+    var lowerCase = newWord;
+    var upperCase = newWord.charAt(0).toUpperCase() + newWord.substr(1);
+
+    //replace lowercase the word cloud with lowercase box
+    var newPhrase = phrase.replace(/\b(cloud)\b/g,lowerCase);
+    console.log(newPhrase);
+    //return uppercase the word Cloud with the uppercase Box
+    return newPhrase.replace(/\b(Cloud)\b/g,upperCase);
   },
 
   /**
